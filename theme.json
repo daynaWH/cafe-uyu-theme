@@ -1,24 +1,478 @@
 {
-	"$schema": "https://schemas.wp.org/wp/6.8/theme.json",
 	"settings": {
 		"appearanceTools": true,
+		"color": {
+			"palette": [
+				{
+					"color": "#2b2b2b",
+					"name": "Neutral charcoal",
+					"slug": "custom-neutral-charcoal"
+				},
+				{
+					"color": "#f9f7f4",
+					"name": "Soft almond cream",
+					"slug": "custom-soft-almond-cream"
+				},
+				{
+					"color": "#566a8e",
+					"name": "Steel blue_accent",
+					"slug": "custom-steel-blue-accent"
+				},
+				{
+					"color": "#ead7ce",
+					"name": "Dalgona beige_accent",
+					"slug": "custom-dalgona-beige-accent"
+				},
+				{
+					"color": "#a27c6e",
+					"name": "Milk tea brown",
+					"slug": "custom-milk-tea-brown"
+				}
+			]
+		},
 		"layout": {
-			"contentSize": "620px",
-			"wideSize": "1000px"
+			"contentSize": "50rem",
+			"wideSize": "62.5rem"
 		},
 		"spacing": {
-			"units": [ "%", "px", "em", "rem", "vh", "vw" ]
+			"units": [
+				"%",
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw"
+			]
 		},
 		"typography": {
+			"defaultFontSizes": false,
+			"fluid": false,
 			"fontFamilies": [
 				{
-					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
-					"name": "System Font",
-					"slug": "system-font"
+					"fontFace": [
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-100-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "200",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-200-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-300-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-400-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-500-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-600-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-700-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-800-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "normal",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-900-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-100-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "200",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-200-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-300-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-400-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-500-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-600-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-700-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-800-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Barlow",
+							"fontStyle": "italic",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/barlow/barlow-900-italic.woff2"
+							]
+						}
+					],
+					"fontFamily": "Barlow, sans-serif",
+					"name": "Barlow",
+					"slug": "barlow"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-100-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "200",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-200-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-300-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-400-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-500-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-600-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-700-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-800-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "normal",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-900-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "100",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-100-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "200",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-200-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-300-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-400-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "500",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-500-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-600-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "700",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-700-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "800",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-800-italic.woff2"
+							]
+						},
+						{
+							"fontFamily": "Urbanist",
+							"fontStyle": "italic",
+							"fontWeight": "900",
+							"src": [
+								"file:./assets/fonts/urbanist/urbanist-900-italic.woff2"
+							]
+						}
+					],
+					"fontFamily": "Urbanist, sans-serif",
+					"name": "Urbanist",
+					"slug": "urbanist"
+				}
+			],
+			"fontSizes": [
+				{
+					"name": "Small",
+					"size": "1rem",
+					"slug": "small"
+				},
+				{
+					"name": "Medium",
+					"size": "1.13rem",
+					"slug": "medium"
+				},
+				{
+					"name": "Large",
+					"size": "1.5rem",
+					"slug": "large"
+				},
+				{
+					"name": "Extra Large",
+					"size": "2rem",
+					"slug": "x-large"
 				}
 			]
 		},
 		"useRootPaddingAwareAlignments": true
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--custom-soft-almond-cream)",
+			"text": "var(--wp--preset--color--custom-neutral-charcoal)"
+		},
+		"elements": {
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--custom-milk-tea-brown)",
+					"text": "var(--wp--preset--color--custom-soft-almond-cream)"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)",
+					"fontSize": "var(--wp--preset--font-size--small)"
+				}
+			},
+			"caption": {
+				"color": {
+					"text": "var(--wp--preset--color--custom-milk-tea-brown)"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--barlow)"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)",
+					"fontSize": "3rem",
+					"fontStyle": "normal",
+					"fontWeight": "500"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)",
+					"fontSize": "2.25rem"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)",
+					"fontSize": "1.75rem"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)",
+					"fontSize": "1.5rem"
+				}
+			},
+			"h5": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)",
+					"fontSize": "1.25rem"
+				}
+			},
+			"h6": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)",
+					"fontSize": "1rem"
+				}
+			},
+			"heading": {
+				"color": {
+					"text": "var(--wp--preset--color--custom-neutral-charcoal)"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--urbanist)"
+				}
+			},
+			"link": {
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--custom-steel-blue-accent)"
+					}
+				},
+				"color": {
+					"text": "var(--wp--preset--color--custom-milk-tea-brown)"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--barlow)",
+					"fontSize": "var(--wp--preset--font-size--small)"
+				}
+			}
+		},
+		"spacing": {
+			"padding": {
+				"bottom": "0rem",
+				"left": "var(--wp--preset--spacing--40)",
+				"right": "var(--wp--preset--spacing--40)",
+				"top": "0rem"
+			}
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--barlow)",
+			"fontSize": "var(--wp--preset--font-size--small)"
+		}
 	},
 	"templateParts": [
 		{
@@ -30,5 +484,6 @@
 			"name": "footer"
 		}
 	],
-	"version": 3
+	"version": 3,
+	"$schema": "https://schemas.wp.org/wp/6.8/theme.json"
 }
