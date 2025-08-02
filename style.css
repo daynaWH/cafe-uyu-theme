@@ -13,3 +13,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: uyu-theme
 Tags: 
 */
+
+.wp-block-navigation-item:hover {
+    transform: translateY(-0.3rem);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Header nav in large viewport */
+@media (min-width: 37.5em) {
+    header .wp-block-group-is-layout-flex {
+        flex-direction: column;
+    }
+}
