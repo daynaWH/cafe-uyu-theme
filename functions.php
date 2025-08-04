@@ -72,7 +72,7 @@ add_filter('render_block', function($block_content, $block, $instance) {
     }
     
     // Target post title blocks within uyu-location queries
-    if ($block['blockName'] === 'core/post-title') {
+    if ($block['blockName'] === 'core/post-title' || $block['blockName'] === 'core/post-featured-image') {
         // Check if this is within a query loop for uyu-location
         $post = get_post();
         if ($post && $post->post_type === 'uyu-location') {
