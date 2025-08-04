@@ -377,6 +377,20 @@
 		"useRootPaddingAwareAlignments": true
 	},
 	"styles": {
+		"blocks": {
+			"core/read-more": {
+				"color": {
+					"text": "var(--wp--preset--color--custom-steel-blue-accent)"
+				},
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--wp--preset--color--custom-steel-blue-accent)"
+						}
+					}
+				}
+			}
+		},
 		"color": {
 			"background": "var(--wp--preset--color--custom-soft-almond-cream)",
 			"text": "var(--wp--preset--color--custom-neutral-charcoal)"
