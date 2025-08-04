@@ -37,7 +37,6 @@ function uyu_register_post_types() {
         'menu_icon'          => 'dashicons-coffee',
         'supports'           => array( 'title', 'editor' ),
         'template'           => array( array( 'core/image' )),
-        'template_lock'      => 'all'
     );
 
     register_post_type( 'uyu-menu', $args );
@@ -115,6 +114,42 @@ function uyu_register_taxonomies() {
         'rewrite'           => array( 'slug' => 'menu-category' ),
     );
     register_taxonomy( 'uyu-menu-category', array( 'uyu-menu' ), $args );
+
+    // Add Featured taxonomy
+    $labels = array(
+        'name'                  => _x( 'Featured', 'taxonomy general name', 'mindset-theme' ),
+        'singular_name'         => _x( 'Featured', 'taxonomy singular name', 'mindset-theme' ),
+        'search_items'          => __( 'Search Featured', 'mindset-theme' ),
+        'all_items'             => __( 'All Featured', 'mindset-theme' ),
+        'parent_item'           => __( 'Parent Featured', 'mindset-theme' ),
+        'parent_item_colon'     => __( 'Parent Featured:', 'mindset-theme' ),
+        'edit_item'             => __( 'Edit Featured', 'mindset-theme' ),
+        'view_item'             => __( 'View Featured', 'mindset-theme' ),
+        'update_item'           => __( 'Update Featured', 'mindset-theme' ),
+        'add_new_item'          => __( 'Add New Featured', 'mindset-theme' ),
+        'new_item_name'         => __( 'New Work Featured', 'mindset-theme' ),
+        'menu_name'             => __( 'Featured', 'mindset-theme' ),
+        'template_name'         => __( 'Featured Archives', 'mindset-theme' ),
+        'menu_name'             => __( 'Featured', 'mindset-theme' ),
+        'not_found'             => __( 'No featured found.', 'mindset-theme' ),
+        'no_terms'              => __( 'No featured', 'mindset-theme' ),
+        'items_list_navigation' => __( 'Featured list navigation', 'mindset-theme' ),
+        'items_list'            => __( 'Featured list', 'mindset-theme' ),
+        'item_link'             => __( 'Featured Link', 'mindset-theme' ),
+        'item_link_description' => __( 'A link to a featured.', 'mindset-theme' ),
+    );
+    
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'featured' ),
+    );
+    
+    register_taxonomy( 'uyu-featured', array( 'uyu-menu'), $args );
 }
 add_action( 'init', 'uyu_register_taxonomies' );
 

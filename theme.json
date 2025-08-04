@@ -457,7 +457,8 @@
 				},
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--barlow)",
-					"fontSize": "var(--wp--preset--font-size--small)"
+					"fontSize": "var(--wp--preset--font-size--small)",
+					"textDecoration": "none"
 				}
 			}
 		},
