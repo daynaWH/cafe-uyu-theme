@@ -80,6 +80,53 @@ function uyu_register_post_types() {
     );
 
     register_post_type( 'uyu-location', $args );
+
+    // Job Postings CPT
+    $labels = array(
+        'name'                  => _x( 'Job Postings', 'post type general name', 'uyu-theme' ),
+        'singular_name'         => _x( 'Job Posting', 'post type singular name', 'uyu-theme' ),
+        'menu_name'             => _x( 'Job Postings', 'admin menu', 'uyu-theme' ),
+        'add_new'               => _x( 'Add New', 'service', 'uyu-theme' ),
+        'add_new_item'          => __( 'Add New Job Posting', 'uyu-theme' ),
+        'new_item'              => __( 'New Job Posting', 'uyu-theme' ),
+        'edit_item'             => __( 'Edit Job Posting', 'uyu-theme' ),
+        'view_item'             => __( 'View Job Posting', 'uyu-theme' ),
+        'all_items'             => __( 'All Job Postings', 'uyu-theme'  ),
+        'search_items'          => __( 'Search Job Postings', 'uyu-theme' ),
+        'parent_item_colon'     => __( 'Parent Job Postings:', 'uyu-theme' ),
+        'not_found'             => __( 'No Job Postings found.', 'uyu-theme' ),
+        'not_found_in_trash'    => __( 'No Job Postings found in Trash.', 'uyu-theme' ),
+        'insert_into_item'      => __( 'Insert into Job Posting', 'uyu-theme' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this Job Posting', 'uyu-theme' ),
+        'item_link'             => __( 'Job Posting link.', 'uyu-theme' ),
+        'item_link_description' => __( 'A link to a job posting.', 'uyu-theme' ),
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_rest'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'careers' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_icon'          => 'dashicons-megaphone',
+        'supports'           => array( 'title', 'editor' ),
+        'template'           => array(
+            array( 'core/heading', array( 'level' => 3, 'content' => 'Role', ) ),
+            array( 'core/paragraph', array( 'placeholder' => 'Describe the role' ) ),
+            array( 'core/heading', array( 'level' => 3, 'content' => 'Requirements' ) ),
+            array( 'core/list' ),
+            array( 'core/heading', array( 'level' => 3, 'content' => 'Location' ) ),
+            array( 'core/paragraph' ),
+        )
+    );
+
+    register_post_type( 'uyu-job-posting', $args );
 }
 add_action( 'init', 'uyu_register_post_types' );
 
@@ -106,6 +153,7 @@ function uyu_register_taxonomies() {
         'item_link'             => __( 'Menu Category Link', 'uyu-theme' ),
         'item_link_description' => __( 'A link to a Menu category.', 'uyu-theme' ),
     );
+    
     $args = array(
         'hierarchical'      => true,
         'labels'            => $labels,
@@ -117,6 +165,7 @@ function uyu_register_taxonomies() {
         'query_var'         => true,
         'rewrite'           => array( 'slug' => 'menu-category' ),
     );
+    
     register_taxonomy( 'uyu-menu-category', array( 'uyu-menu' ), $args );
 
     // Add Featured taxonomy
