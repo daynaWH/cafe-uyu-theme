@@ -29,28 +29,20 @@ add_filter("image_size_names_choose", function($size_names) {
 	return array_merge( $size_names, $new_sizes );
 });
 
-// Custom Post Types and Taxonomies
+// Load custom Post Types and Taxonomies
 require get_template_directory() . "/inc/post-types-taxonomies.php";
-
-// Remove unused admin menus
-function valora_remove_admin_links() {
-    remove_menu_page( "edit.php" );           // Remove Posts link
-    remove_menu_page( "edit-comments.php" );  // Remove Comments link
-}
-add_action( "admin_menu", "valora_remove_admin_links" );
 
 // Load custom blocks
 require get_theme_file_path() . "/uyu-blocks/uyu-blocks.php";
 
 // Add Google Maps API key for ACF Google Map field
-function acf_google_map_api( $api ){
+add_filter("acf/fields/google_map/api", function($api) {
     $api["key"] = GOOGLE_MAPS_API_KEY;;
     return $api;
-}
-add_filter("acf/fields/google_map/api", "acf_google_map_api");
+});
 
 // Enqueue Google Maps script for location post
-function enqueue_acf_map_scripts() {
+add_action('wp_enqueue_scripts', function() {
     // Register Google Maps API script
     wp_register_script(
         'google-maps-api',
@@ -59,7 +51,7 @@ function enqueue_acf_map_scripts() {
         null,
         true
     );
-
+    
     // Enqueue ACF Google Map script
     wp_enqueue_script(
         'acf-google-map',
@@ -68,8 +60,38 @@ function enqueue_acf_map_scripts() {
         null,
         true
     );
-
+    
     // Enqueue Google Maps API script
     wp_enqueue_script('google-maps-api');
-}
-add_action('wp_enqueue_scripts', 'enqueue_acf_map_scripts');
+});
+
+// Modify Location links in front page
+add_filter('render_block', function($block_content, $block, $instance) {
+    if (!is_front_page()) {
+        return $block_content;
+    }
+    
+    // Target post title blocks within uyu-location queries
+    if ($block['blockName'] === 'core/post-title') {
+        // Check if this is within a query loop for uyu-location
+        $post = get_post();
+        if ($post && $post->post_type === 'uyu-location') {
+            $locations_url = get_post_type_archive_link('uyu-location');
+            
+            if ($locations_url) {
+                // Replace the post permalink with locations page URL
+                $pattern = '/href="[^"]*"/';
+                $replacement = 'href="' . esc_url($locations_url) . '"';
+                $block_content = preg_replace($pattern, $replacement, $block_content);
+            }
+        }
+    }
+    
+    return $block_content;
+}, 10, 3);
+
+// Remove unused admin menus
+add_action( "admin_menu", function() {
+    remove_menu_page( "edit.php" );           // Remove Posts link
+    remove_menu_page( "edit-comments.php" );  // Remove Comments link
+} );
