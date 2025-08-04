@@ -1,0 +1,73 @@
+.menu-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+// In-Page Nav
+.menu-nav {
+	position: sticky;
+	top: 0;
+	overflow-y: auto;
+	background: #f7f7f7;
+	padding: 1rem;
+	border: 1px solid #ead7ce;
+}
+
+.menu-nav ul {
+	list-style: none;
+	padding-left: 1rem;
+}
+
+.menu-nav a {
+	display: block;
+	margin: 0.25rem 0;
+	text-decoration: none;
+}
+
+// Menu Content
+.menu-parent-category h2 {
+	text-align: center;
+}
+
+.menu-parent-category h3 {
+	color: #566a8e;
+	margin-top: 3rem;
+}
+
+.menu-child-category {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem 2rem;
+}
+
+.menu-child-category article {
+	text-align: center;
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 300;
+}
+
+.menu-child-description {
+	line-height: 1.5;
+	margin-bottom: 2rem;
+}
+
+@media (min-width: 50em) {
+	.menu-wrapper {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.menu-nav {
+		position: sticky;
+		top: 1rem;
+		width: 15rem;
+		background: none;
+		border: none;
+		flex-shrink: 0;
+	}
+
+	.menu-child-category {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem 3rem;
+	}
+}
