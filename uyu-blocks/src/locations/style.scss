@@ -1,0 +1,38 @@
+.branch-image img {
+	max-height: 30rem;
+	width: 100%;
+	object-fit: cover;
+	object-position: bottom;
+}
+
+.branch-details ul {
+	list-style: none;
+}
+
+.business-hours p,
+.branch-contact-info p {
+	margin-left: 2rem;
+}
+
+.branch-details .address {
+	text-align: center;
+}
+
+.bold-font {
+	font-weight: 600;
+}
+
+.acf-map {
+	height: 20rem;
+	background-color: #f0f0f0;
+	margin: 1.5rem 0;
+}
+
+@media screen and (min-width: 37.5em) {
+	.branch-details {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		align-items: center;
+		gap: 2rem;
+	}
+}

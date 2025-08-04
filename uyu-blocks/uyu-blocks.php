@@ -23,6 +23,9 @@ function uyu_blocks_init() {
 	register_block_type( __DIR__ . '/build/menu-posts', array(
 		"render_callback" => "render_menu_items"
 	));
+	register_block_type( __DIR__ . '/build/locations', array(
+		"render_callback" => "render_locations"
+	));
 
 	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
 		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
@@ -50,6 +53,7 @@ function uyu_blocks_init() {
 }
 add_action( 'init', 'uyu_blocks_init' );
 
+// Render Menu Items Block
 function render_menu_items($attributes) {
 	ob_start();
 	?>
@@ -170,3 +174,96 @@ function render_menu_items($attributes) {
 	<?php
 	return ob_get_clean();
 }
+
+// Render Locations Block
+function render_locations($attributes, $content, $block) {
+    ob_start();
+
+	// Get the post ID from block context
+    $post_id = $block->context['postId'] ?? get_the_ID();
+    if (!$post_id) return '';
+    ?>
+
+	<div class="branch-info-wrapper">
+		<!-- Branch Image -->
+		<div class="branch-image">
+        <?php
+        $branch_image = get_field('branch_image', $post_id);
+        if ($branch_image) {
+			echo '<img src="' . esc_url($branch_image['url'] ?? '') . '" alt="' . esc_attr($branch_image['alt']) . '">';
+		}
+		?>
+		</div>
+
+		<!-- Branch Details -->
+        <div class="branch-details">
+			<div class="branch-details-left">
+				<!-- Business Hours -->
+				<div class="business-hours">
+				<?php
+				$business_hours = get_field('business_hours', $post_id);
+				if ($business_hours) {
+					echo '<h3>Business Hours</h3>';
+					echo '<ul>';
+					foreach ($business_hours as $hours) {
+						$day = $hours['day'] ?? '';
+                        $closed = $hours['closed'] ?? false;
+                        $opening_time = $hours['opening_time'] ?? '';
+                        $closing_time = $hours['closing_time'] ?? '';
+
+						echo '<li><span class="business-day bold-font">' . esc_html($day) . ':</span> ';
+						if ($closed) {
+							echo 'Closed';
+						} else {
+							echo esc_html($opening_time . ' - ' . $closing_time);
+						}
+						echo '</li>';      
+					}
+				}
+				echo '</ul>';
+				?>
+				</div>
+
+				<!-- Contact Info -->
+				<div class="branch-contact-info">
+					<h3>Contact Information</h3>
+					<?php
+					$phone = get_field('phone_number', $post_id);
+					$email = get_field('branch_email_address', $post_id);
+
+					if ($phone) {
+						echo '<p><span class="bold-font">Phone:</span> <a href="tel:' . esc_attr($phone) . '">' . esc_html($phone) . '</a></p>';
+					}
+
+					if ($email) {
+						echo '<p><span class="bold-font">Email:</span> <a href="mailto:' . esc_attr($email) . '">' . esc_html($email) . '</a></p>';
+					}
+					?>
+				</div>
+			</div> <!-- Close Branch Details Left -->
+
+			<div class="branch-details-right">
+				<!-- Branch Location -->
+				<div class="branch-location">
+				<?php
+				$branch_location = get_field('google_map_location');
+				$address = get_field('branch_address', $post_id);
+
+				if ($branch_location) {
+					echo '<div class="acf-map">';
+					echo '<div class="marker" data-lat="' . esc_attr($branch_location['lat']) . '" data-lng="' . esc_attr($branch_location['lng']) . '"></div>';
+					echo '</div>';
+				}
+
+				if ($address) {
+					echo '<p class="address">' . esc_html($address) . '</p>';
+				}
+				?>
+				</div> <!-- Close Branch Location -->
+			</div> <!-- Close Branch Details Right -->
+        </div> <!-- Close Branch Details -->
+    </div> <!-- Close Branch Info Wrapper -->
+    <?php
+    return ob_get_clean();
+}
+?>
