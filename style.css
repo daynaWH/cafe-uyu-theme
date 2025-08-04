@@ -29,3 +29,12 @@ html {
         flex-direction: column;
     }
 }
+
+/* About Page */
+.page-id-48 .about-first-block {
+    margin-top: 3rem;
+}
+
+.about-second-block {
+    margin-block-start: 0;
+}

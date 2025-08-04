@@ -403,7 +403,7 @@
 			"h1": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--urbanist)",
-					"fontSize": "3rem",
+					"fontSize": "2.75rem",
 					"fontStyle": "normal",
 					"fontWeight": "500"
 				}
@@ -411,7 +411,7 @@
 			"h2": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--urbanist)",
-					"fontSize": "2.25rem"
+					"fontSize": "2rem"
 				}
 			},
 			"h3": {
