@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
+import { InspectorControls } from "@wordpress/block-editor";
 import { PanelBody, TextControl } from "@wordpress/components";
 
 /**
@@ -24,7 +24,6 @@ import { PanelBody, TextControl } from "@wordpress/components";
  */
 export default function Edit({ attributes, setAttributes }) {
 	const { copyrightYear } = attributes;
-	// const currentYear = new Date().getFullYear().toString();
 	return (
 		<>
 			<InspectorControls>
@@ -38,7 +37,7 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<p {...useBlockProps()}>
+			<p>
 				{__("Copyright", "copyright-date")} © {copyrightYear}
 			</p>
 		</>

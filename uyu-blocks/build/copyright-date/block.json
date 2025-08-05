@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uyu-blocks/copyright-date",
+  "version": "0.1.0",
+  "title": "Copyright Date",
+  "category": "text",
+  "icon": "calendar",
+  "description": "Display a copyright date.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "typography": {
+      "fontSize": true,
+      "textAlign": true
+    },
+    "color": {
+      "text": true,
+      "background": true
+    }
+  },
+  "textdomain": "copyright-date",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}
