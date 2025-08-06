@@ -215,6 +215,14 @@ footer .wp-block-navigation-item:hover {
     margin-block-start: 0;
 }
 
+/* Menu Page */
+@media (max-width: 50em) {
+    .page-id-50 .aos-animate {
+        position: relative;
+        z-index: 200;
+    }
+}
+
 /* Locations Page */
 .post-type-archive-uyu-location .branch-image img {
     box-shadow: var(--wp--preset--color--custom-soft-almond-cream) 6px 6px 0px -3px,
