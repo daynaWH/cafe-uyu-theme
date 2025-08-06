@@ -18,6 +18,22 @@ html {
     scroll-behavior: smooth;
 }
 
+main {
+    margin-top: 9rem;
+}
+
+@media (min-width: 37.5em) {
+    main {
+        margin-top: 12rem;
+    }
+}
+
+@media (min-width: 50em) {
+    main {
+        margin-top: 14rem;
+    }
+}
+
 /* Header */
 
 header {
@@ -34,6 +50,7 @@ header {
 }
 
 /* Mobile Navigation */
+
 .wp-block-navigation__responsive-container-open svg {
     display: none;
 }
@@ -109,6 +126,7 @@ header {
 }
 
 /* Header navigation list in mobile view only */
+
 @media (max-width: 37.5em) {
     header .wp-block-navigation__submenu-container li {
         padding: 0.5rem;
@@ -130,6 +148,7 @@ header {
 }
 
 /* Header nav in large viewport */
+
 @media (min-width: 37.5em) {
     header .wp-block-group-is-layout-flex {
         flex-direction: column;
@@ -165,23 +184,29 @@ footer .wp-block-navigation-item:hover {
 
 /* Home Page */
 
-div.main-wrapper {
-    margin-top: 9rem;
+.wp-block-media-text,
+.ig-integration,
+.home footer {
+    margin-block-start: 0;
 }
 
-@media (min-width: 37.5em) {
-    .home div.main-wrapper {
-        margin-top: 12rem;
-    }
+.home .wp-block-media-text {
+    padding: 2rem 0;
 }
 
-@media (min-width: 50em) {
-    div.main-wrapper {
-        margin-top: 14rem;
+.wp-block-buttons .wp-block-button__link:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 37.5em) {
+    .featured-menu
+        .wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 /* About Page */
+
 .page-id-48 .about-first-block {
     margin-top: 3rem;
 }

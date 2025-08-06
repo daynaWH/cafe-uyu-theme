@@ -58,6 +58,7 @@ function render_menu_items($attributes) {
 	ob_start();
 	?>
 	<div class="menu-wrapper">
+		<?php if (is_page(50)) { ?>
 			<!-- Menu - Navigation -->
 			<nav class="menu-nav">
 				<ul>
@@ -170,6 +171,59 @@ function render_menu_items($attributes) {
 			}
 		?>
 		</div> <!-- Close Menu - Content -->
+
+	<!-- Menu item display in the front page -->
+	<?php } else if (is_front_page()) { ?>
+		<!-- <div class="menu-items-wrapper"> -->
+		<?php 
+		// Menu items filtered by featured taxonomy
+		$featured_items = get_terms(
+			array(
+				"taxonomy" => "uyu-featured",
+				"hide_empty" => false,
+				"terms" => "front-page",
+			)
+		);
+
+		if ($featured_items && !is_wp_error($featured_items)) {
+			foreach ($featured_items as $item) {
+				echo "<section class='featured-item-wrapper'>";
+				$args = array(
+					"post_type" => "uyu-menu",
+					"posts_per_page" => -1,
+					"tax_query" => array(
+						array(
+							"taxonomy" => "uyu-featured",
+							"field" => "term_id",
+							"terms" => $item->term_id,
+						),
+					),
+				);
+		
+				$query = new WP_Query($args);
+
+				if ($query->have_posts()) {
+					while ($query->have_posts()) {
+						$query->the_post();
+						echo "<div class='menu-item'>";
+						the_content();
+						
+						// Show category and name
+						$categories = get_the_terms(get_the_ID(), 'uyu-menu-category');
+						if (!empty($categories) && !is_wp_error($categories)) {
+							echo "<div class='menu-item-info'>";
+							echo "<p class='menu-name'>" . esc_html(get_the_title()) . "</p>";
+							echo "<p class='menu-category'>" . esc_html($categories[0]->name) . "</p></div>";
+						}
+						echo "</div>";
+					}
+					wp_reset_postdata();
+				}
+			}
+			echo "</section>"; // Close the featured item wrapper
+		}
+		// echo "</div>";
+	} ?>
 	</div> <!-- Close Menu Wrapper -->
 	<?php
 	return ob_get_clean();
