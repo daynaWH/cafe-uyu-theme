@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "uyu-blocks/animate-wrapper",
+  "version": "0.1.0",
+  "title": "Animate Wrapper",
+  "category": "design",
+  "icon": "editor-code",
+  "description": "Wraps content in AOS animation.",
+  "attributes": {
+    "animationType": {
+      "type": "string",
+      "default": "fade-up"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": true
+  },
+  "textdomain": "animate-wrapper",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

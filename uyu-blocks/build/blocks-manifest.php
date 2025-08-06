@@ -1,6 +1,29 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
+	'animate-wrapper' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'uyu-blocks/animate-wrapper',
+		'version' => '0.1.0',
+		'title' => 'Animate Wrapper',
+		'category' => 'design',
+		'icon' => 'editor-code',
+		'description' => 'Wraps content in AOS animation.',
+		'attributes' => array(
+			'animationType' => array(
+				'type' => 'string',
+				'default' => 'fade-up'
+			)
+		),
+		'supports' => array(
+			'html' => false,
+			'align' => true
+		),
+		'textdomain' => 'animate-wrapper',
+		'editorScript' => 'file:./index.js',
+		'style' => 'file:./style-index.css'
+	),
 	'copyright-date' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,

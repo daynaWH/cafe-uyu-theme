@@ -20,6 +20,31 @@ add_action("wp_enqueue_scripts", function() {
         true
     );
 
+    // Load AOS (Animate On Scroll) library
+    wp_enqueue_style(
+        "aos-css",
+        "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css",
+        [],
+        null
+    );
+
+    wp_enqueue_script(
+        "aos-js",
+        "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js",
+        [],
+        null,
+        true
+    );
+
+    wp_enqueue_script(
+        "aos-init",
+        // get_template_directory_uri() . '/assets/js/aos-init.js',
+        get_theme_file_uri("/assets/js/aos-init.js"),
+        ["aos-js"],
+        null,
+        true
+    );
+
     // Enqueue Google Maps script for location post
     // Register Google Maps API script
     wp_register_script(
