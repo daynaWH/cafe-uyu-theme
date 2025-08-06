@@ -1,11 +1,41 @@
 <?php
 
-// Load stylesheet on the front end
+// Load script files on the front end
 add_action("wp_enqueue_scripts", function() {
     // Load normalize.css
     wp_enqueue_style("normalize", get_theme_file_uri("/assets/css/normalize.css"), [], "8.0.1");
+    
     // Load main stylesheet on the front end
     wp_enqueue_style("uyu-style", get_stylesheet_uri());
+    
+    // Load mobile-nav.js
+    wp_enqueue_script(
+        'mobile-nav',
+        get_template_directory_uri() . '/assets/js/mobile-nav.js',
+        array('jquery'),
+        null,
+        true
+    );
+
+    // Enqueue Google Maps script for location post
+    // Register Google Maps API script
+    wp_register_script(
+        'google-maps-api',
+        'https://maps.googleapis.com/maps/api/js?key=' . esc_attr(GOOGLE_MAPS_API_KEY),
+        array(),
+        null,
+        true
+    );
+    // Enqueue ACF Google Map script
+    wp_enqueue_script(
+        'acf-google-map',
+        get_template_directory_uri() . '/assets/js/acf-map.js',
+        array('jquery', 'google-maps-api'),
+        null,
+        true
+    );
+    // Enqueue Google Maps API script
+    wp_enqueue_script('google-maps-api');
 });
 
 // Load stylesheet on the back-end editor
@@ -39,30 +69,6 @@ require get_theme_file_path() . "/uyu-blocks/uyu-blocks.php";
 add_filter("acf/fields/google_map/api", function($api) {
     $api["key"] = GOOGLE_MAPS_API_KEY;;
     return $api;
-});
-
-// Enqueue Google Maps script for location post
-add_action('wp_enqueue_scripts', function() {
-    // Register Google Maps API script
-    wp_register_script(
-        'google-maps-api',
-        'https://maps.googleapis.com/maps/api/js?key=' . esc_attr(GOOGLE_MAPS_API_KEY),
-        array(),
-        null,
-        true
-    );
-    
-    // Enqueue ACF Google Map script
-    wp_enqueue_script(
-        'acf-google-map',
-        get_template_directory_uri() . '/assets/js/acf-map.js',
-        array('jquery', 'google-maps-api'),
-        null,
-        true
-    );
-    
-    // Enqueue Google Maps API script
-    wp_enqueue_script('google-maps-api');
 });
 
 // Modify Location links in front page
