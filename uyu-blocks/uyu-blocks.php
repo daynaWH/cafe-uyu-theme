@@ -174,7 +174,6 @@ function render_menu_items($attributes) {
 
 	<!-- Menu item display in the front page -->
 	<?php } else if (is_front_page()) { ?>
-		<!-- <div class="menu-items-wrapper"> -->
 		<?php 
 		// Menu items filtered by featured taxonomy
 		$featured_items = get_terms(
@@ -222,7 +221,6 @@ function render_menu_items($attributes) {
 			}
 			echo "</section>"; // Close the featured item wrapper
 		}
-		// echo "</div>";
 	} ?>
 	</div> <!-- Close Menu Wrapper -->
 	<?php
@@ -265,13 +263,13 @@ function render_locations($attributes, $content, $block) {
                         $opening_time = $hours['opening_time'] ?? '';
                         $closing_time = $hours['closing_time'] ?? '';
 
-						echo '<li><span class="business-day bold-font">' . esc_html($day) . ':</span> ';
+						echo '<li><p><span class="business-day bold-font">' . esc_html($day) . ':</span> ';
 						if ($closed) {
 							echo 'Closed';
 						} else {
 							echo esc_html($opening_time . ' - ' . $closing_time);
 						}
-						echo '</li>';      
+						echo '</p></li>';      
 					}
 				}
 				echo '</ul>';
