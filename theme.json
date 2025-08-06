@@ -34,6 +34,9 @@
 			"contentSize": "50rem",
 			"wideSize": "62.5rem"
 		},
+		"shadow": {
+			"presets": []
+		},
 		"spacing": {
 			"units": [
 				"%",
@@ -378,6 +381,17 @@
 	},
 	"styles": {
 		"blocks": {
+			"core/button": {
+				"shadow": "var(--wp--preset--shadow--sharp)",
+				"typography": {
+					"textTransform": "uppercase"
+				}
+			},
+			"core/paragraph": {
+				"typography": {
+					"lineHeight": "1.5"
+				}
+			},
 			"core/read-more": {
 				"color": {
 					"text": "var(--wp--preset--color--custom-steel-blue-accent)"

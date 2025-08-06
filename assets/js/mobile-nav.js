@@ -24,18 +24,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Remove default close button from DOM and replace the hamburger icon
-    closeBtn.remove();
-    openBtnIcon.remove();
-    openBtn.appendChild(createHamburgerIcon());
+    // MutationObserver to wait for closeBtn to appear
+    const observer = new MutationObserver(() => {
+        if (closeBtn) {
+            closeBtn.remove(); // remove it once found
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
+
+    // Replace default hamburger icon
+    if (openBtnIcon) {
+        openBtnIcon.remove();
+        openBtn.appendChild(createHamburgerIcon());
+    }
 
     // Toggle navigation visibility
-    openBtn.addEventListener("click", function () {
+    openBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
         openBtn.classList.toggle("toggled");
 
-        if (navContainer.classList.contains("has-modal-open")) {
+        const isOpen = navContainer.classList.toggle("has-modal-open");
+        navContainer.classList.toggle("is-menu-open", isOpen);
+
+        // Force enable scrolling
+        document.body.style.overflow = "auto";
+    });
+
+    // Close menu when click outside the nav container
+    document.addEventListener("click", function (e) {
+        if (!navContainer.contains(e.target) && !openBtn.contains(e.target)) {
             navContainer.classList.remove("has-modal-open", "is-menu-open");
-        } else {
-            navContainer.classList.add("has-modal-open", "is-menu-open");
+            openBtn.classList.remove("toggled");
+            document.body.style.overflow = "auto";
         }
     });
 });

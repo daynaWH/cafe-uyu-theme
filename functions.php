@@ -6,14 +6,17 @@ add_action("wp_enqueue_scripts", function() {
     wp_enqueue_style("normalize", get_theme_file_uri("/assets/css/normalize.css"), [], "8.0.1");
     
     // Load main stylesheet on the front end
-    wp_enqueue_style("uyu-style", get_theme_file_uri("/assets/css/style.css"), [], "1.0.0");
+    wp_enqueue_style("uyu-style", get_stylesheet_uri(),
+    array(),
+    wp_get_theme()->get( "Version" ),
+    "all");
     
     // Load mobile-nav.js
     wp_enqueue_script(
         "mobile-nav",
         get_theme_file_uri("/assets/js/mobile-nav.js"),
         array("jquery"),
-        null,
+        "1.0.2",
         true
     );
 
@@ -69,7 +72,7 @@ require get_theme_file_path() . "/uyu-blocks/uyu-blocks.php";
 
 // Add Google Maps API key for ACF Google Map field
 add_filter("acf/fields/google_map/api", function($api) {
-    $api["key"] = GOOGLE_MAPS_API_KEY;;
+    $api["key"] = GOOGLE_MAPS_API_KEY;
     return $api;
 });
 
@@ -111,17 +114,6 @@ add_action( "login_enqueue_scripts", function() {
         get_theme_file_uri("/assets/css/style-login.css")
     );
 });
-
-// // Add favicon
-// add_action("wp_head", function() {
-//     echo '<link rel="icon" type="image/x-icon" href="'.get_stylesheet_directory_uri().'/favicon">';
-//     echo '<link rel="icon" type="image/png" href="'.get_stylesheet_directory_uri().'/favicon/favicon-96x96.png" sizes="96x96" />';
-//     echo '<link rel="icon" type="image/svg+xml" href="'.get_stylesheet_directory_uri().'/favicon/favicon.svg" />';
-//     echo '<link rel="shortcut icon" href="'.get_stylesheet_directory_uri().'/favicon/favicon.ico" />';
-//     echo '<link rel="apple-touch-icon" sizes="180x180" href="'.get_stylesheet_directory_uri().'/favicon/apple-touch-icon.png" />';
-//     echo '<meta name="apple-mobile-web-app-title" content="Valora" />';
-//     echo '<link rel="manifest" href="'.get_stylesheet_directory_uri().'/favicon/site.webmanifest" />';
-// }) ;
 
 // Change Logo in the Login page
 add_action( "login_enqueue_scripts", function() { ?>

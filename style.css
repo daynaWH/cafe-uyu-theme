@@ -19,7 +19,7 @@ html {
 }
 
 main {
-    margin-top: 9rem;
+    margin-top: 10rem;
 }
 
 img {
@@ -28,13 +28,7 @@ img {
 
 @media (min-width: 37.5em) {
     main {
-        margin-top: 12rem;
-    }
-}
-
-@media (min-width: 50em) {
-    main {
-        margin-top: 14rem;
+        margin-top: 13rem;
     }
 }
 
@@ -102,7 +96,7 @@ header {
 }
 
 .wp-block-navigation__responsive-container.has-modal-open.is-menu-open {
-    transform: translateY(11rem) !important;
+    margin-top: 9.5rem;
     height: fit-content;
     box-shadow: 0 0.5rem 0.5rem #ead7ce;
 }
