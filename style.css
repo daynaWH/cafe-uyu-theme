@@ -194,8 +194,17 @@ footer .wp-block-navigation-item:hover {
     padding: 2rem 0;
 }
 
+.featured-item-wrapper {
+    padding: 2rem 0;
+}
+
 .wp-block-buttons .wp-block-button__link:hover {
     opacity: 0.8;
+}
+
+.home .uyu-location img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
 
 @media (max-width: 37.5em) {
